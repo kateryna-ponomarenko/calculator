@@ -1,3 +1,5 @@
+using System;
+
 namespace calculator;
 
 public class Stack
@@ -33,7 +35,7 @@ public class Stack
     
     // create pop & peek
 
-    public string Pop()
+    public string Pop( )//Returns the last added element.
     {
         if (_pointer <= 0)
         {
@@ -57,6 +59,7 @@ public class Stack
         return _array[_pointer - 1];
     }
     
+    public int Count => _pointer;
     
     
 }
