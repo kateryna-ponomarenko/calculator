@@ -1,22 +1,26 @@
+using System;
+
 namespace calculator;
 
 public class Tokens
 {
 
     private string _buffer = "";
-    public Queue QueueForTokens { get; private set; } = new Queue();
+    // public Queue QueueForTokens { get; private set; } = new Queue();
     
-    public string[] operators = { "+","-","*","/",")","(","^"};
+    private string[] _operators = { "+","-","*","/",")","(","^"};
 
     public Queue DivisionForTokens(string example)
     {
+        
+        Queue QueueForTokens = new Queue();
+
         if (example.Equals(string.Empty))
         {
             throw  new ArgumentException("example is empty");
         }
         
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // від'ємні числа and + 1 -5 + else for letters = tryparse
+     
         
         
         
@@ -36,10 +40,10 @@ public class Tokens
                     QueueForTokens.Enqueue(_buffer);
                     _buffer = "";
                 }
-                continue;
+                
             }
 
-            else if (operators.Contains(symbol.ToString()))
+            else if (_operators.Contains(symbol.ToString()))
             {
                 if (_buffer.Length > 0)
                 {
@@ -61,4 +65,6 @@ public class Tokens
         }
         return QueueForTokens;
     }
+    
+    
 }
